@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {addNewTask} from '../../../redux/actions';
+import { connect, useDispatch } from 'react-redux';
+import { addNewTask } from '../../../redux/actions';
+import { asyncPostData } from '../../../redux/asyncActions';
 
-const InputTask = () => {
+const InputTask = (props) => {
     const dispatch = useDispatch();
     const [state, setState] = useState('');
 
     const pressEnter = (e) => {
         if (e.key === 'Enter') {
-            dispatch(addNewTask(state));
+            console.log(state)
+            props.add(state)
+            dispatch(asyncPostData());
             setState('');
         }
     }
@@ -19,4 +22,10 @@ const InputTask = () => {
     )
 }
 
-export default InputTask
+const mapDispatchToProps = (dispatch, data) => {
+    return {
+        add: (data) => dispatch(addNewTask(data))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(InputTask);
