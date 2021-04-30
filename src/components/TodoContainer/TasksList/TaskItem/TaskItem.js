@@ -1,36 +1,38 @@
 import React, {useState} from 'react'
+import { useDispatch } from 'react-redux';
+import {asyncChangeCheckedStatus} from '../../../../redux/asyncActions';
 
 const TaskItem = ({task}) => {
+    const dispatch = useDispatch();
     const [state, setState] = useState(task);
-    const [checkbox, setCheckbox] = useState(state.checked);
+
+
     const changeCheckStatus = () => {
-        if (checkbox) {
-            setCheckbox(false)
-            return setState({
-                ...state,
-                checked: checkbox
-            })
-        }
-        setCheckbox(true)
-        return setState({
-            ...state,
-            checked: checkbox
+        setState({
+            id: state.id,
+            text: state.text,
+            checked: !state.checked
         })
+        return dispatch(asyncChangeCheckedStatus(state))
     }
     const checkTask = () => {
-        if (checkbox) {
+        if (state.checked) {
             return (
+                <div>
+                    <input type="checkbox" onClick={changeCheckStatus} checked></input>
                     <span className="task"><s>{state.text}</s></span>
+                </div>   
                 )
         }
-        return (<span className="task">{state.text}</span>)
-    }
-    return (
-        <li className="list-group-item d-flex justify-content-between align-items-center">
+        return (
             <div>
                 <input type="checkbox" onClick={changeCheckStatus}></input>
+                <span className="task">{state.text}</span>
+            </div>)
+    }
+    return (
+        <li className="list-group-item d-flex justify-content-between align-items-center">              
                 {checkTask()}
-            </div>
             <div className="buttons d-flex justify-content-between">
                 <button className="btn btn-warning">Edit</button>
                 <button className="btn btn-danger">Delete</button>

@@ -2,23 +2,23 @@
   "tasks": [
     {
       "id": 1,
-      "text": "buy milk",
-      "checked": false
+      "text": "asd",
+      "checked": true
     },
     {
       "id": "f9e945fd-d029-4898-b0ad-251aad4e39cb",
       "text": "Aza",
-      "checked": false
+      "checked": true
     },
     {
       "id": "983eb748-4487-4c49-b3fa-07988e826b3e",
       "text": "Azawe",
-      "checked": false
+      "checked": true
     },
     {
       "id": "3ae8911c-fdf5-4753-ba09-092914529380",
       "text": "Aza",
-      "checked": false
+      "checked": true
     },
     {
       "id": "35075924-f38b-4d23-b466-5451e5ea4650",

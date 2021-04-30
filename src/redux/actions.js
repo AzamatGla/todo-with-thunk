@@ -17,4 +17,4 @@ export const fetchData = (tasks) => {
         type: "GET_DATA_FROM_DB",
         payload: tasks
     }
-} 
+}

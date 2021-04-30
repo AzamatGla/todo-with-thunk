@@ -22,6 +22,12 @@ const reducer = (state = initialState, action) => {
                 tasks: [...state.tasks, ...action.payload]
             }
         }
+        case "CHANGE_STATUS": {
+            return {
+                ...state,
+                tasks: [...state.tasks]
+            }
+        }
         default: return state
     }
 }
