@@ -18,3 +18,10 @@ export const fetchData = (tasks) => {
         payload: tasks
     }
 }
+
+export const deleteTask = (index) => {
+    return {
+        type: "DELETE_ITEM",
+        payload: index
+    }
+}

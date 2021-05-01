@@ -1,4 +1,4 @@
-import {addNewTask, fetchData} from './actions';
+import {addNewTask, fetchData, deleteTask} from './actions';
 
 export const asyncFetchData = () => async (dispatch) => {
     await fetch('http://localhost:3000/tasks')
@@ -20,8 +20,7 @@ export const asyncPostData = () => async (dispatch, getState) => {
         },
         body: JSON.stringify(newTask)
     })
-    .then(res => res.json());
-        
+    .then(res => res.json());       
 };
 
 export const asyncChangeCheckedStatus = (state) => async (dispatch, getState) => {
@@ -36,4 +35,14 @@ export const asyncChangeCheckedStatus = (state) => async (dispatch, getState) =>
         body: JSON.stringify(updatedTask)
     })
     .then(res => res.json());
+};
+
+export const asyncDeleteTask = (id) => async (dispatch, getState) => {
+    const index = getState().tasks.findIndex(item => item.id === id);
+    await fetch(`http://localhost:3000/tasks/${id}`, {
+        method: "DELETE"
+    })
+    .then(res => {
+            return dispatch(deleteTask(index));
+    });
 }

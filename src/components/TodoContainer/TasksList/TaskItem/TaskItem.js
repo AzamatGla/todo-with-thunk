@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux';
-import {asyncChangeCheckedStatus} from '../../../../redux/asyncActions';
+import {asyncChangeCheckedStatus, asyncDeleteTask, asyncFetchData} from '../../../../redux/asyncActions';
 
 const TaskItem = ({task}) => {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const TaskItem = ({task}) => {
         if (state.checked) {
             return (
                 <div>
-                    <input type="checkbox" onClick={changeCheckStatus} checked></input>
+                    <input type="checkbox" onClick={changeCheckStatus} defaultChecked></input>
                     <span className="task"><s>{state.text}</s></span>
                 </div>   
                 )
@@ -30,12 +30,16 @@ const TaskItem = ({task}) => {
                 <span className="task">{state.text}</span>
             </div>)
     }
+    const deleteTask = (id) => {
+        dispatch(asyncDeleteTask(id))
+    }
+
     return (
         <li className="list-group-item d-flex justify-content-between align-items-center">              
                 {checkTask()}
             <div className="buttons d-flex justify-content-between">
                 <button className="btn btn-warning">Edit</button>
-                <button className="btn btn-danger">Delete</button>
+                <button className="btn btn-danger" onClick={() => deleteTask(state.id)}>Delete</button>
             </div>
         </li>
     )
