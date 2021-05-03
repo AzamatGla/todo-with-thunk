@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux';
+import {Link} from 'react-router-dom';
 import {asyncChangeCheckedStatus, asyncDeleteTask, asyncFetchData} from '../../../../redux/asyncActions';
 
 const TaskItem = ({task}) => {
@@ -7,15 +8,18 @@ const TaskItem = ({task}) => {
     const [state, setState] = useState(task);
 
 
-    const changeCheckStatus = () => {
+
+    const changeCheckStatus = async () => {
+        console.log(state.checked)
         setState({
-            id: state.id,
-            text: state.text,
+            ...state,
             checked: !state.checked
         })
+        console.log(state)
         return dispatch(asyncChangeCheckedStatus(state))
     }
     const checkTask = () => {
+        console.log(state.checked)
         if (state.checked) {
             return (
                 <div>
@@ -33,12 +37,15 @@ const TaskItem = ({task}) => {
     const deleteTask = (id) => {
         dispatch(asyncDeleteTask(id))
     }
+    
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-center">              
                 {checkTask()}
             <div className="buttons d-flex justify-content-between">
-                <button className="btn btn-warning">Edit</button>
+                <Link to={`/edit/${state.id}`}>
+                    <button className="btn btn-warning">Edit</button>
+                </Link>
                 <button className="btn btn-danger" onClick={() => deleteTask(state.id)}>Delete</button>
             </div>
         </li>

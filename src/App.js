@@ -21,7 +21,7 @@ function App() {
                     <Route exact path="/">
                         <TodoContainer />
                     </Route>
-                    <Route path="/update/:id">
+                    <Route path="/edit/:id">
                         <UpdateTask />
                     </Route>
                     

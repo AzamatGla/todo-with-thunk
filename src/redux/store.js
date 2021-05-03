@@ -28,10 +28,18 @@ const reducer = (state = initialState, action) => {
                 tasks: [...state.tasks]
             }
         }
-        case "DELETE_ITEM": {
+        case "DELETE_TASK": {
             return {
                 ...state,  
                 tasks: [...state.tasks.slice(0, action.payload), ...state.tasks.slice(action.payload + 1)]
+            }
+        }
+        case "EDIT_TASK": {
+            return {
+                ...state,
+                tasks: [
+                    ...action.payload
+                ]
             }
         }
         default: return state

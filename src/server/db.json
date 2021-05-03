@@ -1,3 +1,14 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "id": "46ce8899-b7f5-4840-8c36-bdb571477a06",
+      "text": "first tasknjnjnjnj66",
+      "checked": false
+    },
+    {
+      "id": "62ec68a2-abe0-4fec-ba41-87bd54cde2b9",
+      "text": "second taskjkjkjk66",
+      "checked": false
+    }
+  ]
 }

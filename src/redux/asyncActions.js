@@ -1,4 +1,4 @@
-import {addNewTask, fetchData, deleteTask} from './actions';
+import {addNewTask, fetchData, deleteTask, editTask} from './actions';
 
 export const asyncFetchData = () => async (dispatch) => {
     await fetch('http://localhost:3000/tasks')
@@ -24,7 +24,9 @@ export const asyncPostData = () => async (dispatch, getState) => {
 };
 
 export const asyncChangeCheckedStatus = (state) => async (dispatch, getState) => {
+    console.log(state)
     const newStatus = state.checked ? false : true;
+    console.log(newStatus);
     const updatedTask = {id: state.id, text: state.text, checked: newStatus};
     await fetch(`http://localhost:3000/tasks/${state.id}`, {
         method: "PUT",
@@ -45,4 +47,18 @@ export const asyncDeleteTask = (id) => async (dispatch, getState) => {
     .then(res => {
             return dispatch(deleteTask(index));
     });
+};
+
+export const asyncEditTask = (newTask) => async (dispatch, getState) => {
+    const newArray = getState().tasks.map(item => item.id === newTask.id ? newTask : item);
+    await fetch(`http://localhost:3000/tasks/${newTask.id}`, {
+        method: "PUT",
+        headers: {
+            "Access": "application/json",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(newTask)
+    }).then(res => {
+        console.log('success')
+    })
 }
