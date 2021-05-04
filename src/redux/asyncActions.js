@@ -59,6 +59,7 @@ export const asyncEditTask = (newTask) => async (dispatch, getState) => {
         },
         body: JSON.stringify(newTask)
     }).then(res => {
+        dispatch(fetchData(newArray));
         console.log('success')
     })
 }

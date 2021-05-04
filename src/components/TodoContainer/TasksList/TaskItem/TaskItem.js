@@ -19,7 +19,6 @@ const TaskItem = ({task}) => {
         return dispatch(asyncChangeCheckedStatus(state))
     }
     const checkTask = () => {
-        console.log(state.checked)
         if (state.checked) {
             return (
                 <div>

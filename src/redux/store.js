@@ -17,9 +17,11 @@ const reducer = (state = initialState, action) => {
             }
         }
         case "GET_DATA_FROM_DB": {
+            console.log('www')
+            console.log(action.payload)
             return {
                 ...state,
-                tasks: [...state.tasks, ...action.payload]
+                tasks: [...action.payload]
             }
         }
         case "CHANGE_STATUS": {
@@ -35,9 +37,11 @@ const reducer = (state = initialState, action) => {
             }
         }
         case "EDIT_TASK": {
+            console.log(action.payload)
             return {
                 ...state,
                 tasks: [
+                    ...state.tasks,
                     ...action.payload
                 ]
             }

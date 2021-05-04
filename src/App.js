@@ -15,20 +15,14 @@ function App() {
     <div className="background-image d-flex justify-content-center">
         <div className="app-container">
         <h1 className="label text-light">Список задач</h1>
-        <Provider store={store}>
-            <Router>
-                <Switch>
-                    <Route exact path="/">
-                        <TodoContainer />
-                    </Route>
-                    <Route path="/edit/:id">
-                        <UpdateTask />
-                    </Route>
-                    
-                </Switch>
-            </Router>
-            
-        </Provider>
+        <Router>
+            <Provider store={store}>      
+                    <Switch>
+                        <Route exact path="/" component={TodoContainer} />
+                        <Route path="/edit/:id" component={UpdateTask} />
+                    </Switch>                
+            </Provider>
+        </Router>
         </div>
     </div>
   );

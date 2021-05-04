@@ -13,6 +13,7 @@ export const addNewTask = (task) => {
 }
 
 export const fetchData = (tasks) => {
+    console.log('here')
     return {
         type: "GET_DATA_FROM_DB",
         payload: tasks
