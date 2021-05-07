@@ -1,14 +1,19 @@
 {
   "tasks": [
     {
-      "id": "46ce8899-b7f5-4840-8c36-bdb571477a06",
-      "text": "first task aza112",
+      "id": "b21342a6-4d53-4386-a4a4-7be677e93ae5",
+      "text": "task1",
+      "checked": true
+    },
+    {
+      "id": "24c3902d-2837-4c5d-8b93-ea1c6ec6f29c",
+      "text": "task2",
       "checked": false
     },
     {
-      "id": "a57b4494-a2f2-4654-a1bc-8339104b358d",
-      "text": "normal task aza aza1231",
-      "checked": false
+      "id": "43d777ee-7e6e-4684-ae4c-5fedad4ded3c",
+      "text": "task4",
+      "checked": true
     }
   ]
 }

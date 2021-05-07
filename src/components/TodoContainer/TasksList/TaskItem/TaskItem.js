@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom';
-import {asyncChangeCheckedStatus, asyncDeleteTask, asyncFetchData} from '../../../../redux/asyncActions';
+import {asyncChangeCheckedStatus, asyncDeleteTask} from '../../../../redux/asyncActions';
 
 const TaskItem = ({task}) => {
     const dispatch = useDispatch();
     const [state, setState] = useState(task);
+    useEffect(() => {
+        setState(task)
+    }, [task]);
 
 
 

@@ -20,6 +20,7 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={TodoContainer} />
                         <Route path="/edit/:id" component={UpdateTask} />
+                        <Route path="*" render={() => <h1 className="error404">error 404</h1>} />
                     </Switch>                
             </Provider>
         </Router>

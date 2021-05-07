@@ -17,15 +17,16 @@ const UpdateTask = (props) => {
     const [state, setState] = useState(task);
 
     const submitUpdateTask = () => {
+       
         dispatch(asyncEditTask(state));
-        return history.push('/');
+        return history.push('/')
     }
 
 
     return (
         <div>
             <input type="text" className="form-control" value={state.text} onChange={(e) => setState({...task, text: e.target.value})}></input>
-            <div className="buttons mt-1 d-flex">
+            <div className="buttons d-flex mt-2 justify-content-between w-50">
                 <button className="btn btn-warning" onClick={submitUpdateTask}>Изменить</button>
                 <Link className="btn btn-danger" to="/">Отменить</Link>
             </div>

@@ -7,7 +7,7 @@ export const asyncFetchData = () => async (dispatch) => {
             dispatch(fetchData(json));
         })
         .catch(err => alert('Проблемы с сервером, пожалуйста убедитесь что вы запустили json-server'));
-}
+};
 
 export const asyncPostData = () => async (dispatch, getState) => {
     const tasks = getState().tasks;
@@ -60,6 +60,5 @@ export const asyncEditTask = (newTask) => async (dispatch, getState) => {
         body: JSON.stringify(newTask)
     }).then(res => {
         dispatch(fetchData(newArray));
-        console.log('success')
     })
-}
+};
